@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import PasswordInput from "../../components/Input/PasswordInput";
 import { useNavigate } from "react-router-dom";
 import { validateEmail} from "../../utils/helper";
-import axiosinstance from "../../utils/helper";
+import axiosInstance from "../../utils/axiosInstance";
 
 const SignUp = () => {
     const [name, setName] = useState("");
@@ -16,15 +16,15 @@ const SignUp = () => {
         e.preventDefault();
       
         if (!name) {
-          setError("Please enter your name");
+          setError("Please enter your name.");
           return;
         }
 
         if (!validateEmail(email)) {
             setError("Please enter a valid email address.");
             return;
-          }
-
+        }
+        
         if (!password) {
             setError("Please enter the password");
             return;
@@ -62,18 +62,17 @@ const SignUp = () => {
       
   return (
     <div className="h-screen bg-cyan-50 overflow-hidden relative">
-        <div className="login-ui-box right-10 -top-40" />
-        <div className="login-ui-box bg-cyan-200 -bottom-40 right-1/2" />
+        <div className="login-ui-box right-10 -top-40 z-0" />
+        <div className="login-ui-box bg-cyan-200 -bottom-40 right-1/2 z-0" />
 
-        <div className="container h-screen flex items-center justify-center px-20 mx-auto">
-            <div className="w-2/4 h-[90vh] flex items-end bg-signup-bg-img bg-cover bg-center rounded-">
+        <div className="container h-screen flex items-center justify-center px-20 mx-auto z-10">
+            <div className="w-2/4 h-[90vh] flex items-end bg-signup-bg-img bg-cover bg-center rounded-lg p-10 z-10">
                 <div>
                     <h4 className="text-xl text-white font-semibold leading-[35px]">
-                        Join the <br/>Adventure
+                        Join The <br /> Adventure
                     </h4>
                     <p className="text-[15px] text-white leading-6 sm:mr-6">
-                        Create an account to start documenting your travels and preserving
-                        your memories in your personal travel journal.
+                        Create an account to start documenting your travels and preserving memories in your personal travel journal.
                     </p>
                 </div>
             </div>
@@ -134,4 +133,4 @@ const SignUp = () => {
 };
 
 
-export default SignUp
+export default SignUp;

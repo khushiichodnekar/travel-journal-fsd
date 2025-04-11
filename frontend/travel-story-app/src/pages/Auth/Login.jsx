@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import PasswordInput from "../../components/Input/PasswordInput";
 import { useNavigate } from "react-router-dom";
 import { validateEmail} from "../../utils/helper";
-import axiosinstance from "../../utils/axiosinstance";
+import axiosInstance from "../../utils/axiosInstance";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -59,7 +59,7 @@ const Login = () => {
         <div className="login-ui-box bg-cyan-200 -bottom-40 right-1/2 z-0" />
 
         <div className="container h-screen flex items-center justify-center px-20 mx-auto z-10">
-            <div className="w-2/4 h-[90vh] flex items-end bg-login-bg-img bg-cover bg-center rounded- z-10">
+            <div className="w-2/4 h-[90vh] flex items-end bg-login-bg-img bg-cover bg-center rounded-lg p-10 z-10">
                 <div>
                     <h4 className="text-xl text-white font-semibold leading-[35px]">
                         Capture Your <br /> Journeys
