@@ -5,6 +5,7 @@ import axiosInstance from "../../utils/axiosInstance";
 import { MdAdd } from "react-icons/md";
 import Modal from "react-modal";
 import AddEditTravelStory from "./AddEditTravelStory";
+import ViewTravelStory from "./ViewTravelStory";
 
 import TravelStoryCard from "../../components/Cards/TravelStoryCard";
 
@@ -24,6 +25,10 @@ const Home = () => {
     data: null,
   });
   
+  const [openViewModal, setOpenViewModal] = useState({
+    isShown: false,
+    data: null,
+  });  
 
   // Get User Info
   const getUserInfo = async () => {
@@ -55,10 +60,16 @@ const Home = () => {
   };
 
   // Handle Edit Story Click
-  const handleEdit = (data) => {}
+  const handleEdit = (data) => {
+    setOpenAddEditModal({ isShown: true, type: "edit", data: data });
+  };
+
 
   // Handle Travel Story Click
-  const handleViewStory = (data) => {}
+  const handleViewStory = (data) => {
+    setOpenViewModal({ isShown: true, data });
+  };
+  
 
   // Handle Update Favourite
   const updateIsFavourite = async (storyData) => {
@@ -109,7 +120,6 @@ const Home = () => {
                       date={item.visitedDate}
                       visitedLocation={item.visitedLocation}
                       isFavourite={item.isFavourite}
-                      onEdit={() => handleEdit(item)}
                       onClick={() => handleViewStory(item)}
                       onFavouriteClick={() => updateIsFavourite(item)}
                     />
@@ -147,6 +157,32 @@ const Home = () => {
       />
 
     </Modal>
+    {/* View Travel Story Modal */}
+    <Modal
+      isOpen={openViewModal.isShown}
+      onRequestClose={() => setOpenViewModal({})}
+      style={{
+        overlay: {
+          backgroundColor: "rgba(0,0,0,0.2)",
+          zIndex: 999,
+        },
+      }}
+      appElement={document.getElementById("root")}
+      className="modal-box"
+    >
+      <ViewTravelStory
+        storyInfo={openViewModal.data || null}
+        onClose={() => {
+          setOpenViewModal((prevState) => ({ ...prevState, isShown: false }));
+        }}
+        onEditClick={() => {
+          setOpenViewModal((prevState) => ({ ...prevState, isShown: false }));
+          handleEdit(openViewModal.data || null)
+        }}
+        onDeleteClick={() => {}}
+      />
+    </Modal>
+
 
       <button
         className="w-16 h-16 flex items-center justify-center rounded-full bg-primary hover:bg-cyan-400 fixed right-10 bottom-10"
