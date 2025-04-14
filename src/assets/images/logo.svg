@@ -1,0 +1,18 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    <![CDATA[
+      @font-face {
+        font-family: 'Pacifico';
+        src: url('https://fonts.gstatic.com/s/pacifico/v22/FwZY7-Qmy14u9lezJ-6H6Mk.woff2') format('woff2');
+      }
+
+      text {
+        font-family: 'Pacifico', cursive;
+        font-size: 28px;
+        fill: #00bcd4;
+      }
+    ]]>
+  </style>
+
+  <text x="0" y="40">Travel Story</text>
+</svg>
